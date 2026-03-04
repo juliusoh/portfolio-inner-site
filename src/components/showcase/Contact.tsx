@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import colors from '../../constants/colors';
+import React, { useEffect, useState } from 'react';
 import ghIcon from '../../assets/pictures/contact-gh.png';
 import inIcon from '../../assets/pictures/contact-in.png';
 export interface ContactProps {}
