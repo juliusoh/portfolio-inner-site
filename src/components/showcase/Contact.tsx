@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import colors from '../../constants/colors';
-import twitterIcon from '../../assets/pictures/contact-twitter.png';
 import ghIcon from '../../assets/pictures/contact-gh.png';
 import inIcon from '../../assets/pictures/contact-in.png';
-import ResumeDownload from './ResumeDownload';
-
 export interface ContactProps {}
 
 // function to validate email
@@ -31,12 +28,11 @@ const SocialBox: React.FC<SocialBoxProps> = ({ link, icon }) => {
 };
 
 const Contact: React.FC<ContactProps> = (props) => {
-    const [company, setCompany] = useState('');
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
+    const [subject, setSubject] = useState('');
     const [isFormValid, setIsFormValid] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
     const [formMessage, setFormMessage] = useState('');
     const [formMessageColor, setFormMessageColor] = useState('');
 
@@ -47,58 +43,6 @@ const Contact: React.FC<ContactProps> = (props) => {
             setIsFormValid(false);
         }
     }, [email, name, message]);
-
-    async function submitForm() {
-        if (!isFormValid) {
-            setFormMessage('Form unable to validate, please try again.');
-            setFormMessageColor('red');
-            return;
-        }
-        try {
-            setIsLoading(true);
-            const res = await fetch(
-                'https://api.henryheffernan.com/api/contact',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        company,
-                        email,
-                        name,
-                        message,
-                    }),
-                }
-            );
-            // the response will be either {success: true} or {success: false, error: message}
-            const data = (await res.json()) as
-                | {
-                      success: false;
-                      error: string;
-                  }
-                | { success: true };
-            if (data.success) {
-                setFormMessage(`Message successfully sent. Thank you ${name}!`);
-                setCompany('');
-                setEmail('');
-                setName('');
-                setMessage('');
-                setFormMessageColor(colors.blue);
-                setIsLoading(false);
-            } else {
-                setFormMessage(data.error);
-                setFormMessageColor(colors.red);
-                setIsLoading(false);
-            }
-        } catch (e) {
-            setFormMessage(
-                'There was an error sending your message. Please try again.'
-            );
-            setFormMessageColor(colors.red);
-            setIsLoading(false);
-        }
-    }
 
     useEffect(() => {
         if (formMessage.length > 0) {
@@ -116,34 +60,44 @@ const Contact: React.FC<ContactProps> = (props) => {
                 <div style={styles.socials}>
                     <SocialBox
                         icon={ghIcon}
-                        link={'https://github.com/henryjeff'}
+                        link={'https://github.com/juliusoh'}
                     />
                     <SocialBox
                         icon={inIcon}
-                        link={'https://www.linkedin.com/in/henryheffernan/'}
-                    />
-                    <SocialBox
-                        icon={twitterIcon}
-                        link={'https://twitter.com/henryheffernan'}
+                        link={'https://www.linkedin.com/in/julius-oh/'}
                     />
                 </div>
             </div>
             <div className="text-block">
                 <p>
-                    I am currently employed, however if you have any
-                    opportunities, feel free to reach out - I would love to
+                    I'm always open to new opportunities and would love to
                     chat! You can reach me via my personal email, or fill out
                     the form below!
                 </p>
                 <br />
                 <p>
                     <b>Email: </b>
-                    <a href="mailto:henryheffernan@gmail.com">
-                        henryheffernan@gmail.com
+                    <a href="mailto:juliusoh@gmail.com">
+                        juliusoh@gmail.com
                     </a>
                 </p>
+                <p>
+                    <b>Phone: </b>
+                    <a href="tel:+7147234408">
+                        (714) 723-4408
+                    </a>
+                </p>
+                <p>
+                    <b>Location: </b>
+                    Orange County / Los Angeles, California
+                </p>
 
-                <div style={styles.form}>
+                <form
+                    style={styles.form}
+                    action="https://formsubmit.co/juliusoh@gmail.com"
+                    method="POST"
+                    target="_blank"
+                >
                     <label>
                         <p>
                             {!name && <span style={styles.star}>*</span>}
@@ -176,16 +130,16 @@ const Contact: React.FC<ContactProps> = (props) => {
                     />
                     <label>
                         <p>
-                            <b>Company (optional):</b>
+                            <b>Subject (optional):</b>
                         </p>
                     </label>
                     <input
                         style={styles.formItem}
-                        type="company"
-                        name="company"
-                        placeholder="Company"
-                        value={company}
-                        onChange={(e) => setCompany(e.target.value)}
+                        type="text"
+                        name="subject"
+                        placeholder="Subject"
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
                     />
                     <label>
                         <p>
@@ -205,14 +159,9 @@ const Contact: React.FC<ContactProps> = (props) => {
                             className="site-button"
                             style={styles.button}
                             type="submit"
-                            disabled={!isFormValid || isLoading}
-                            onMouseDown={submitForm}
+                            disabled={!isFormValid}
                         >
-                            {!isLoading ? (
-                                'Send Message'
-                            ) : (
-                                <p className="loading">Sending</p>
-                            )}
+                            Send Message
                         </button>
                         <div style={styles.formInfo}>
                             <p
@@ -243,9 +192,8 @@ const Contact: React.FC<ContactProps> = (props) => {
                             </p>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-            <ResumeDownload altText="Need a copy of my Resume?" />
         </div>
     );
 };

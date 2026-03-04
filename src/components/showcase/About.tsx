@@ -2,8 +2,6 @@ import React from 'react';
 import me from '../../assets/pictures/workingAtComputer.jpg';
 import meNow from '../../assets/pictures/currentme.jpg';
 import { Link } from 'react-router-dom';
-import ResumeDownload from './ResumeDownload';
-
 export interface AboutProps {}
 
 const About: React.FC<AboutProps> = (props) => {
@@ -12,13 +10,14 @@ const About: React.FC<AboutProps> = (props) => {
         <div className="site-page-content">
             {/* <img src={me} style={styles.topImage} alt="" /> */}
             <h1 style={{ marginLeft: -16 }}>Welcome</h1>
-            <h3>I'm Henry Heffernan</h3>
+            <h3>I'm Julius Oh</h3>
             <br />
             <div className="text-block">
                 <p>
-                    I'm a software engineer currently working at Vercel! In May
-                    of 2022 I graduated from Rensselaer Polytechnic Institute
-                    with my BS in Computer Science.
+                    I'm a Software Engineer based in Orange County / Los Angeles,
+                    California. I'm a versatile technology enthusiast with
+                    experience spanning DevOps, software engineering, and cloud
+                    engineering roles.
                 </p>
                 <br />
                 <p>
@@ -27,24 +26,20 @@ const About: React.FC<AboutProps> = (props) => {
                     building it. If you have any questions or comments, feel
                     free to contact me using{' '}
                     <Link to="/contact">this form</Link> or shoot me an email at{' '}
-                    <a href="mailto:henryheffernan@gmail.com">
-                        henryheffernan@gmail.com
+                    <a href="mailto:juliusoh@gmail.com">
+                        juliusoh@gmail.com
                     </a>
                 </p>
             </div>
-            <ResumeDownload />
             <div className="text-block">
                 <h3>About Me</h3>
                 <br />
                 <p>
-                    From a young age, I have had a curiosity about how things
-                    worked. This naturally led me to become absolutely obsessed
-                    with Lego and I fell in love with building things. In
-                    elementary school, I joined the Lego Robotics team at my
-                    local middle school, which was my first real exposure to
-                    programming. In 2008, my family and I moved across the
-                    country from California to New York, where I attended middle
-                    school, high school, and college.
+                    My proficiency is drawn from a wide range of projects
+                    involving the development, deployment, and maintenance of
+                    applications, infrastructures, and cloud environments.
+                    My experience encompasses tools and frameworks such as
+                    Terraform, AWS, Kubernetes, React, Node.js, and TypeScript.
                 </p>
                 <br />
                 <div className="captioned-image">
@@ -58,32 +53,28 @@ const About: React.FC<AboutProps> = (props) => {
                 </div>
 
                 <p>
-                    I started programming more seriously in high school,
-                    initially learning how to scrape and interact with websites.
-                    I went on to do a ton of passion projects, many of them with
-                    one of my closest friends,{' '}
-                    <a
-                        rel="noreferrer"
-                        target="_blank"
-                        href="https://www.linkedin.com/in/scott-bass-189a7919b/"
-                    >
-                        Scott Bass
-                    </a>
-                    . We worked on many projects together, including chat bots,
-                    multiple game projects, apps, and more. One of these
-                    projects is viewable on my{' '}
-                    <Link to="/projects/software">Software Projects</Link> page.
+                    I attended California State University, Long Beach where I
+                    earned my Bachelor of Arts. I then completed an Accelerated
+                    Development Program at LearningFuze, which launched my
+                    career in software engineering.
                 </p>
                 <br />
                 <p>
-                    In 2017, I got accepted into Rennselear Polytechnic
-                    Institute to study Computer Science. It was my first choice
-                    and I was absolutely ecstatic to be going to such a great
-                    university. At the end of my sophomore year, I got an
-                    internship working for the startup Hover, primarily focusing
-                    on frontend work. I continued to work at Hover on and off
-                    for about a year and a half, until the start of my senior
-                    year when I decided to focus on other opportunities.
+                    As a Cloud Engineer, I enjoy working directly with clients,
+                    addressing their business needs, and providing tailored
+                    technical recommendations. I'm adept at using tools like
+                    Terraform and Cloud Deployment Manager to create and
+                    maintain infrastructures, with a keen eye on implementing
+                    security controls for cloud environments.
+                </p>
+                <br />
+                <p>
+                    In software engineering, my strength lies in creating and
+                    optimizing front-end applications using TypeScript and
+                    React, always ensuring cross-browser compatibility and
+                    optimal performance. I've also managed and provisioned AWS
+                    resources and implemented CI/CD pipelines using GitLab,
+                    Jenkins, and CircleCI.
                 </p>
                 <br />
                 <br />
@@ -100,29 +91,18 @@ const About: React.FC<AboutProps> = (props) => {
                         <br />
                         <p>
                             Beyond software, I have a lot of hobbies that I
-                            enjoy doing in my free time. The more tangible
-                            hobbies I have are{' '}
-                            <Link to="/projects/music">Music Production</Link>{' '}
-                            and creating{' '}
-                            <Link to="/projects/art">Digital Art</Link>. You can
-                            read more about each of these on their respective
-                            pages under my projects tab. Some other hobbies I
-                            enjoy are working out, cooking, and (unsurprisingly)
-                            playing video games.
-                        </p>
-                        <br />
-                        <p>
-                            In college, I was an active member in the fraternity
-                            Sigma Alpha Epsilon and held multiple positions in
-                            the chapter. I met a lot of amazing people through
-                            my fraternity and thoroughly enjoyed the community.
+                            enjoy doing in my free time. I'm passionate about
+                            photography and design art. I also practice
+                            Brazilian Jiu Jitsu — I'm currently a purple belt
+                            at Art Of Jiu Jitsu. Some other hobbies I enjoy are
+                            working out, cooking, and programming side projects.
                         </p>
                     </div>
                     <div style={styles.verticalImage}>
                         <img src={meNow} style={styles.image} alt="" />
                         <p>
                             <sub>
-                                <b>Figure 2:</b> Me, April 2022
+                                <b>Figure 2:</b> Me
                             </sub>
                         </p>
                     </div>
@@ -132,16 +112,7 @@ const About: React.FC<AboutProps> = (props) => {
                 <p>
                     Thanks for reading about me! I hope that you enjoy exploring
                     the rest of my portfolio website and everything it has to
-                    offer. If you find the easter egg make sure to let me know
-                    on twitter{' '}
-                    <a
-                        rel="noreferrer"
-                        target="_blank"
-                        href="https://twitter.com/henryheffernan"
-                    >
-                        @henryheffernan
-                    </a>{' '}
-                    Good luck and have fun!
+                    offer.
                 </p>
                 <br />
                 <p>
@@ -149,8 +120,8 @@ const About: React.FC<AboutProps> = (props) => {
                     them. You can reach me through the{' '}
                     <Link to="/contact">contact page</Link> or shoot me an email
                     at{' '}
-                    <a href="mailto:henryheffernan@gmail.com">
-                        henryheffernan@gmail.com
+                    <a href="mailto:juliusoh@gmail.com">
+                        juliusoh@gmail.com
                     </a>
                 </p>
             </div>
